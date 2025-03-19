@@ -1,12 +1,9 @@
-cmake_minimum_required(VERSION 3.15)
-project(GrabCutInterop)
+cmake_minimum_required(VERSION 3.12)
 
-# Enable C++17
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+project(GrabCutEdgeDetection)
 
-# Set the build type to Release
-set(CMAKE_BUILD_TYPE Release)
+# Set C++ standard
+set(CMAKE_CXX_STANDARD 14)
 
 # Set the OpenCV static flag
 set(OpenCV_STATIC ON)
@@ -28,20 +25,15 @@ if(NOT OpenCV_FOUND)
     message(FATAL_ERROR "OpenCV not found. Please install OpenCV and make sure it's in the CMake search path.")
 endif()
 
-# Specify the location of the source files
-set(SOURCE_FILES
-        GrabCutAlgorithm.cpp
-        GrabCutAlgorithm.hpp
+# Create the DLL
+add_library(GrabCutEdgeDetection SHARED
+    GrabCutEdgeDetection.cpp
 )
 
-# Create the static library (uncomment the shared version if you need a DLL)
-add_library(GrabCutAlgorithm STATIC ${SOURCE_FILES})
-
-# Include directories for headers
-target_include_directories(GrabCutAlgorithm PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-
 # Link OpenCV libraries
-target_link_libraries(grabcut_edge_detection ${OpenCV_LIBS})
+target_link_libraries(GrabCutEdgeDetection PRIVATE ${OpenCV_LIBS})
 
-# Optional: Add include directories for OpenCV headers
-include_directories(${OpenCV_INCLUDE_DIRS})
+# Set properties for the DLL
+set_target_properties(GrabCutEdgeDetection PROPERTIES
+    WINDOWS_EXPORT_ALL_SYMBOLS YES
+)
