@@ -18,6 +18,6 @@ struct Result {
 };
 
 // Exported function to compute the foreground and background probability scores
-extern "C" EXPORT_DECL Result* compute_foreground_background_probability(const cv::Mat& image_rgb);
+extern "C" EXPORT_DECL Result* compute_foreground_background_probability(const char* image_path);
 
 #endif

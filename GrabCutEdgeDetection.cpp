@@ -38,8 +38,16 @@ cv::Mat multi_scale_canny(const cv::Mat& image, const std::vector<double>& sigma
 }
 
 // Helper function: Compute the foreground and background probability scores
-extern "C" EXPORT_DECL Result* compute_foreground_background_probability(const cv::Mat& image_rgb) {
+extern "C" EXPORT_DECL Result* compute_foreground_background_probability(const char* image_path) {
     Result* result = new Result;
+
+    // Load the image from the file path
+    cv::Mat image_rgb = cv::imread(image_path, cv::IMREAD_COLOR);
+    
+    if (image_rgb.empty()) {
+        std::cerr << "Error: Unable to load image from path: " << image_path << std::endl;
+        return nullptr;
+    }
 
     // Apply multi-scale Canny edge detection
     cv::Mat gray_image;
