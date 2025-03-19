@@ -3,8 +3,8 @@
 
 #include <opencv2/opencv.hpp>
 
-// Define the export/import attribute depending on the platform
-#if defined(_WIN32) || defined(_WIN64)
+// Define the export/import attribute depending on the platform on Windows (x86, x64, ARM64)
+#if defined(_WIN32) || defined(_WIN64) || defined(_ARM64)
     #define EXPORT_DECL __declspec(dllexport)
 #else
     #define EXPORT_DECL __attribute__((visibility("default")))
