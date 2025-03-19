@@ -38,7 +38,7 @@ cv::Mat multi_scale_canny(const cv::Mat& image, const std::vector<double>& sigma
 }
 
 // Helper function: Compute the foreground and background probability scores
-extern "C" __declspec(dllexport) Result* compute_foreground_background_probability(const cv::Mat& image_rgb) {
+extern "C" EXPORT_DECL Result* compute_foreground_background_probability(const cv::Mat& image_rgb) {
     Result* result = new Result;
 
     // Apply multi-scale Canny edge detection
