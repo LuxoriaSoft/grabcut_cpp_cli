@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.12)
 project(GrabCutEdgeDetection)
 
 # Set C++ standard
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 20)
 
 # Set the OpenCV static flag
 set(OpenCV_STATIC ON)
