@@ -148,7 +148,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: grabcut-edge-segmentation-${{ matrix.arch }}
-          path: D:\a\grabcut_cpp_cli\grabcut_cpp_cli\build\bin\Release\
+          path: D:\a\grabcut_dllcore\grabcut_dllcore\build\bin\Release\
 
 # DOCS :
 # Add additional flags to the CMAKE_CXX_FLAGS variable to enable or disable specific features.
