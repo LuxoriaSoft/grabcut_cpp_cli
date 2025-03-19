@@ -1,19 +1,16 @@
-#pragma once
+#ifndef GRABCUT_EDGE_DETECTION_H
+#define GRABCUT_EDGE_DETECTION_H
+
 #include <opencv2/opencv.hpp>
-#include <tuple>
-#include <vector>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+// Struct to hold the result
+struct Result {
+    double foreground_score;  // Foreground probability score
+    double background_score;  // Background probability score
+    double edge_weighted_fg;  // Edge-weighted foreground score
+};
 
-// Function to apply multi-scale Canny edge detection
-__declspec(dllexport) cv::Mat multi_scale_canny(const cv::Mat& image, const std::vector<double>& sigma_list);
+// Exported function to compute the foreground and background probability scores
+extern "C" __declspec(dllexport) Result* compute_foreground_background_probability(const cv::Mat& image_rgb);
 
-// Function to compute the foreground and background probabilities
-__declspec(dllexport) std::tuple<cv::Mat, double, double, double> compute_foreground_background_probability(
-    const cv::Mat& image_rgb, const cv::Mat& edges_refined);
-
-#ifdef __cplusplus
-}
 #endif

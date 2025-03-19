@@ -147,7 +147,7 @@ jobs:
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: grabcut-detection-${{ matrix.arch }}
+          name: grabcut-edge-segmentation-${{ matrix.arch }}
           path: D:\a\grabcut_image_segementation\grabcut_image_segementation\build\bin\Release\
 
 # DOCS :
